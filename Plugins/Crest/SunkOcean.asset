@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33068fc021dadc04dab6e00e4ff45c00, type: 3}
+  m_Name: SunkOcean
+  m_EditorClassIdentifier: 
+  _windSpeed: 5.111111
+  _fetch: 500000
+  _waveDirectionVariance: 90
+  _gravityScale: 0.3
+  _smallWavelengthMultiplier: 1
+  _multiplier: 1
+  _powerLog:
+  - -5.743946
+  - -5.141927
+  - -4.5400305
+  - -3.9386249
+  - -3.3391829
+  - -2.2573965
+  - -1.7366863
+  - -3.1820223
+  - -3.1035502
+  - -3.1360946
+  - -2.1597633
+  - 3.09
+  - 2.7505622
+  - -6
+  _powerDisabled: 0000000000000000000000000000
+  _chopScales:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  _gravityScales:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 0.99
+  - 1.06
+  - 0.97
+  - 1.01
+  - 0.84
+  _chop: 1.611
+  _showAdvancedControls: 0

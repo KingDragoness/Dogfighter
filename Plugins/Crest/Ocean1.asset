@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33068fc021dadc04dab6e00e4ff45c00, type: 3}
+  m_Name: Ocean1
+  m_EditorClassIdentifier: 
+  _windSpeed: 29.527779
+  _fetch: 166518
+  _waveDirectionVariance: 145
+  _gravityScale: 0.4
+  _smallWavelengthMultiplier: 2.82
+  _multiplier: 0.45
+  _powerLog:
+  - -4.843434
+  - -4.2413745
+  - -3.6393156
+  - -3.0372603
+  - -2.435219
+  - -1.8332337
+  - -1.5605383
+  - -0.6086957
+  - -0.19565217
+  - 0.06521739
+  - 0.19565217
+  - 0.73913044
+  - 0.3125
+  - -3.5488648
+  _powerDisabled: 0000000000000000000000000000
+  _chopScales:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  _gravityScales:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  _chop: 1.056
+  _showAdvancedControls: 0

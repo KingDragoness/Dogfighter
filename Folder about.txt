@@ -1,0 +1,5 @@
+Editor: you know
+Pragma: base engine
+Game: the game
+External: store assets
+Plugins: assemblies
