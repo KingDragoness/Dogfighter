@@ -15,7 +15,7 @@ namespace Dogfighter
 
         public void ExecuteInteraction()
         {
-            QuickReferencor.InteractPointer.ExecuteCommand(interactCommand);
+            Interactions.InteractObject(interactCommand);
         }
 
     }

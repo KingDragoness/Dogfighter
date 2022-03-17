@@ -1,5 +1,5 @@
 Editor: you know
-Pragma: base engine
-Game: the game
+Pragma: base engine, maybe for reuse other games
+Dogfighter: high level systems
 External: store assets
 Plugins: assemblies

@@ -18,7 +18,6 @@ namespace Dogfighter
         [Header("Core Gameplay")]
         [SerializeField]
         private MyCharacterController player;
-        public IOffCamerable currentOffCamerable;
 
         private PragmaClass.Gamemode gamemode;
 
@@ -34,7 +33,9 @@ namespace Dogfighter
 
 
         //Static variables
-        public static bool isPaused = false;
+        private static bool isPaused = false;
+        public static bool IsPaused { get => isPaused;}
+
         public static MyCharacterController Player { get => instance.player; set => instance.player = value; }
 
 
@@ -43,16 +44,12 @@ namespace Dogfighter
         private void Awake()
         {
             instance = this;
-            GlobalEngineEvents.OnPauseGame += OnPauseGame;
-            GlobalEngineEvents.OnUnpauseGame += OnUnpauseGame;
             GlobalEngineEvents.OnChangeGamemode += OnChangeGamemode;
             InputEvents.InputFreeLook += InputEvents_InputFreeLook;
         }
 
         private void OnDestroy()
         {
-            GlobalEngineEvents.OnPauseGame -= OnPauseGame;
-            GlobalEngineEvents.OnUnpauseGame -= OnUnpauseGame;
             GlobalEngineEvents.OnChangeGamemode -= OnChangeGamemode;
             InputEvents.InputFreeLook -= InputEvents_InputFreeLook;
 
@@ -88,15 +85,6 @@ namespace Dogfighter
 
         #region Pause/unpause
 
-        private static void OnPauseGame()
-        {
-            Time.timeScale = 0;
-        }
-
-        private static void OnUnpauseGame()
-        {
-            Time.timeScale = 1;
-        }
 
         public static void TogglePause()
         {
@@ -137,6 +125,15 @@ namespace Dogfighter
             if (gamemode == PragmaClass.Gamemode.FirstPerson)
             {
                 if (player.gameObject.activeSelf == false) player.gameObject.SetActive(true);
+
+                if (IsPaused)
+                {
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
             }
             else
             {
@@ -145,7 +142,14 @@ namespace Dogfighter
 
             if (gamemode == PragmaClass.Gamemode.Noclip)
             {
-
+                if (IsPaused)
+                {
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
             }
             else
             {
@@ -156,31 +160,34 @@ namespace Dogfighter
             {
                 if (player.gameObject.activeSelf == true) player.gameObject.SetActive(false);
 
-                if (currentOffCamerable != null)
+                if (IsPaused)
                 {
-                    var virtualCam = currentOffCamerable.VirtualCamera();
-
-                    if (virtualCam.activeSelf == false) virtualCam.SetActive(true);
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
                 }
             }
             else
             {
-                if (currentOffCamerable != null)
-                {
-                    var virtualCam = currentOffCamerable.VirtualCamera();
 
-                    if (virtualCam.activeSelf == true) virtualCam.SetActive(false);
-                }
+            }
+
+            if (gamemode == PragmaClass.Gamemode.InteractUI)
+            {
+                if (player.gameObject.activeSelf == true) player.gameObject.SetActive(false);
+
+                Time.timeScale = 0;
+            }
+            else
+            {
 
             }
         }
 
         #endregion
 
-        public static void SetOffCamerable(IOffCamerable offCamerable)
-        {
-            instance.currentOffCamerable = offCamerable;
-        }
 
     }
 }

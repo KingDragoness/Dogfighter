@@ -9,7 +9,9 @@ namespace Dogfighter
     {
 
         public LayerMask objectMask;
-        public InteractableScript currentInteractable;
+
+        [SerializeField]
+        private InteractableScript currentInteractable;
 
         private GameObject currentGameobjectLookAt;
 
@@ -19,17 +21,9 @@ namespace Dogfighter
             private set => currentGameobjectLookAt = value;
         }
 
-        private void Update()
+        public InteractableScript CurrentInteractable
         {
-            if (Input.GetKeyUp(KeyCode.F))
-            {
-                if (currentInteractable != null) currentInteractable.QuickInteract();
-            }
-        }
-
-        public void ExecuteCommand(InteractCommand interactCommand)
-        {
-            currentInteractable.Interact(interactCommand);
+            get => currentInteractable;
         }
 
         private void FixedUpdate()

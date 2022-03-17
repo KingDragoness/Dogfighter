@@ -10,8 +10,9 @@ namespace Pragma
         public enum Gamemode
         {
             FirstPerson = 0,    //Default player mode
-            Offcamera = 1,     //During playing games, interact screen objects, using spaceship, etc 
-            Noclip = 2
+            Offcamera = 1,      //During playing games, interact screen objects, using spaceship, etc 
+            InteractUI = 2,    //During interact overlay hud mode
+            Noclip = 3
         }
 
     }

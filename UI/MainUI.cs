@@ -14,13 +14,23 @@ namespace Dogfighter
         public GameObject UIObject_MoreInteractions;
 
         [Space]
+        [Header("Interact UI")]
+        [SerializeField]
+        private ReadingBookUI readingBookUI;
+
+        [Space]
         public GameObject mainGameUI;
         public GameObject pauseMenuUI;
         public GameObject blurEffectCamera;
 
 
+        private static MainUI instance;
+
+        public static ReadingBookUI ReadingBookUI { get => instance.readingBookUI; set => instance.readingBookUI = value; }
+
         private void Awake()
         {
+            instance = this;
             GlobalEngineEvents.OnPauseGame += OnPauseGame;
             GlobalEngineEvents.OnUnpauseGame += OnUnpauseGame;
         }
@@ -44,9 +54,9 @@ namespace Dogfighter
         {
 
 
-            if (GameplayManager.isPaused == false)
+            if (!GameplayManager.IsPaused)
             {
-                var currentInteract = QuickReferencor.InteractPointer.currentInteractable;
+                var currentInteract = QuickReferencor.InteractPointer.CurrentInteractable;
 
                 //if (currentInteract != null)
                 //{

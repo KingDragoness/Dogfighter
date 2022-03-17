@@ -88,7 +88,9 @@ namespace Dogfighter
 
         private void RefreshMoreInteractList(bool fullSize)
         {
-            if (QuickReferencor.InteractPointer.currentInteractable == null)
+            var Interactable = QuickReferencor.InteractPointer.CurrentInteractable;
+
+            if (Interactable == null)
             {
                 return;
             }
@@ -99,7 +101,7 @@ namespace Dogfighter
             }
 
             AllMoreInteractButtons.Clear();
-            var CommandContainer = QuickReferencor.InteractPointer.currentInteractable.CommandContainer;
+            var CommandContainer = Interactable.CommandContainer;
 
             int index = 0;
 

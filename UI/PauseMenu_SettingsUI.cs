@@ -14,11 +14,13 @@ namespace Dogfighter
         [FoldoutGroup("Sounds")] public ModularUI_SliderLabelValue Slider_SFX;
         [FoldoutGroup("Sounds")] public ModularUI_SliderLabelValue Slider_Music;
 
+        [FoldoutGroup("Graphics")] public Toggle Toggle_Fullscreen;
 
         private void Start()
         {
             Slider_SFX.sliderValue.SetValueWithoutNotify(DogfightEngineSettings.SFX_VOLUME);
             Slider_Music.sliderValue.SetValueWithoutNotify(DogfightEngineSettings.MUSIC_VOLUME);
+            Toggle_Fullscreen.SetIsOnWithoutNotify(DogfightEngineSettings.Fullscreen);
 
             RefreshUI();
         }
@@ -28,6 +30,16 @@ namespace Dogfighter
         {
             DogfightEngineSettings.SFX_VOLUME = Slider_SFX.sliderValue.value;
             DogfightEngineSettings.MUSIC_VOLUME = Slider_Music.sliderValue.value;
+
+            if (Toggle_Fullscreen.isOn)
+            {
+                DogfightEngineSettings.FULLSCREEN = 1;
+            }
+            else
+            {
+                DogfightEngineSettings.FULLSCREEN = 0;
+            }
+
             DogfightEngineSettings.SavePrefs();
 
 

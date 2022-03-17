@@ -27,7 +27,7 @@ namespace Dogfighter
         private void Update()
         {
             if (enableMachineGun == false) return;
-            if (Time.timeScale == 0) { StopMachineGun(); return; }
+            if (GameplayManager.IsPaused) { StopMachineGun(); return; }
 
             ProcessRotation();
 

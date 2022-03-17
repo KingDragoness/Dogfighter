@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Pragma;
+using Sirenix.OdinInspector;
 
 namespace Dogfighter
 {
 
-    public class Interact_CockpitPilot : InteractableScript, IOffCamerable
+    [RequireComponent(typeof(Interact_ThirdCamera))]
+    public class Interact_CockpitPilot : InteractableScript
     {
 
-        public GameObject virtualCamera;
         public PlayerAirplane airplaneScript;
         public UnityEvent OnPilotMode;
         public UnityEvent OnExitPilot;
+        public Interact_ThirdCamera thirdCamera;
 
         private bool isPilotMode = false;
         private InteractCommand Command_Sit;
@@ -29,19 +31,14 @@ namespace Dogfighter
             return "Meh";
         }
 
-        public GameObject VirtualCamera()
-        {
-            return virtualCamera;
-        }
-
+        [Button("Debug: Toggle Pilot")]
         public void TogglePilotMode()
         {
             isPilotMode = !isPilotMode;
 
             if (isPilotMode)
             {
-                GameplayManager.ChangeGamemode(PragmaClass.Gamemode.Offcamera);
-                GameplayManager.SetOffCamerable(this);
+                Interactions.EnterThirdCamera(thirdCamera);
                 airplaneScript.EnableInput(true);
 
                 Command_Sit.CommandDisplay = "Standup";
@@ -49,7 +46,7 @@ namespace Dogfighter
             }
             else
             {
-                GameplayManager.ChangeGamemode(PragmaClass.Gamemode.FirstPerson);
+                Interactions.ExitThirdCamera();
                 airplaneScript.EnableInput(false);
 
                 Command_Sit.CommandDisplay = "Sit";

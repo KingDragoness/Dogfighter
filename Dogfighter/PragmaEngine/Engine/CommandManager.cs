@@ -68,6 +68,13 @@ namespace Pragma
                     command1 = Command_ChangeGamemode,
                     errorMessage = "Invalid argument! ui [0 = firstperson, 1 = offcamera, 2 = noclip]"
                 }
+                ,               
+                new GameCommand
+                {
+                    commandName = "spawn" ,
+                    command1 = Command_SpawnObject,
+                    errorMessage = "Invalid argument! spawn [vfx/obj] [string ID]"
+                }
             };
 
             public static GameCommand GetCommand(string commandName)
@@ -91,6 +98,7 @@ namespace Pragma
                 helpLists.Add("'clear' to wipe console.");
                 helpLists.Add("'savegame' to save game.");
                 helpLists.Add("'loadgame' to load game.");
+                helpLists.Add("'spawn' to spawn objects.");
 
                 return helpLists;
             }
@@ -150,6 +158,24 @@ namespace Pragma
 
                 PragmaClass.Gamemode gamemode1 = (PragmaClass.Gamemode)index;
                 GameplayManager.ChangeGamemode(gamemode1);
+            }
+
+            private static void Command_SpawnObject(string[] args)
+            {
+                string typeObject = args[1];
+                string IDObject = args[2];
+
+                if (typeObject == "vfx")
+                {
+                    var playerTransform = GameplayManager.Player.transform;
+
+                    ParticleManager.SpawnParticle(IDObject, playerTransform.position + playerTransform.forward);
+                }
+                else
+                {
+                    throw new System.Exception("type invalid, failed!");
+                }
+
             }
 
         }

@@ -11,7 +11,13 @@ namespace Dogfighter
 
         public static float SFX_VOLUME = 0.5f;
         public static float MUSIC_VOLUME = 0.5f;
+        public static int FULLSCREEN = 0;
         public static int VSYNC = 0;
+
+        public static bool Fullscreen
+        {
+            get { return IntToBool(FULLSCREEN); }
+        }
 
         private static DogfightEngineSettings instance;
 
@@ -35,6 +41,7 @@ namespace Dogfighter
             SFX_VOLUME = AssignValuePref("SETTINGS.SFX_VOLUME", 1); //PlayerPrefs.GetFloat("");
             MUSIC_VOLUME = AssignValuePref("SETTINGS.MUSIC_VOLUME", 1); //PlayerPrefs.GetFloat("SETTINGS.MUSIC_VOLUME");
             VSYNC = PlayerPrefs.GetInt("SETTINGS.VSYNC");
+            FULLSCREEN = PlayerPrefs.GetInt("SETTINGS.FULLSCREEN");
 
         }
 
@@ -43,6 +50,7 @@ namespace Dogfighter
             PlayerPrefs.SetFloat("SETTINGS.SFX_VOLUME", DogfightEngineSettings.SFX_VOLUME);
             PlayerPrefs.SetFloat("SETTINGS.MUSIC_VOLUME", DogfightEngineSettings.MUSIC_VOLUME);
             PlayerPrefs.SetInt("SETTINGS.VSYNC", DogfightEngineSettings.VSYNC);
+            PlayerPrefs.SetInt("SETTINGS.FULLSCREEN", DogfightEngineSettings.FULLSCREEN);
 
         }
 
@@ -51,6 +59,7 @@ namespace Dogfighter
 
             SoundManager.Sfx_Mixer.audioMixer.SetFloat("Master", Mathf.Log10(DogfightEngineSettings.SFX_VOLUME) * 20);
             SoundManager.Music_Mixer.audioMixer.SetFloat("Master", Mathf.Log10(DogfightEngineSettings.MUSIC_VOLUME) * 20);
+            Screen.fullScreen = IntToBool(DogfightEngineSettings.FULLSCREEN);
 
         }
 
@@ -67,7 +76,7 @@ namespace Dogfighter
             }
         }
 
-        public bool IntToBool(int a)
+        public static bool IntToBool(int a)
         {
             if (a == 1)
             {

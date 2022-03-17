@@ -5,10 +5,7 @@ using UnityEngine;
 namespace Pragma
 {
 
-    public interface IOffCamerable
-    {
-        GameObject VirtualCamera();
-    }
+
 
     [RequireComponent(typeof(CommandContainer))]
     public abstract class InteractableScript : PragmaScript
